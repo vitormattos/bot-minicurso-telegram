@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 
 use Telegram\Bot\Api;
+use Telegram\Bot\Objects\Update;
 
 if(file_exists('.env')) {
     $dotenv = new Dotenv\Dotenv(__DIR__);
@@ -11,7 +12,7 @@ if(file_exists('.env')) {
             return new Update(json_decode(getenv('MOCK_JSON'), true));
         }
     }
-    $telegram = new mockApi($config['token']);
+    $telegram = new mockApi();
 } else {
     error_log(file_get_contents('php://input'));
     $telegram = new Api();
@@ -25,7 +26,7 @@ if($update->has('message')) {
             case '/about':
                 $telegram->sendMessage([
                     'chat_id' => $message->getChat()->getId(),
-                    'Sobre alguma coisa'
+                    'text' => 'Sobre alguma coisa'
                 ]);
                 break;
             case '/start':
