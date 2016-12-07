@@ -26,7 +26,8 @@ if($update->has('message')) {
             case '/about':
                 $telegram->sendMessage([
                     'chat_id' => $message->getChat()->getId(),
-                    'text' => 'Sobre alguma coisa'
+                    'text' => 'Sobre alguma coisa',
+                    'reply_to_message_id' => $message->getMessageId()
                 ]);
                 break;
             case '/start':
