@@ -16,5 +16,5 @@ $inputFile = new InputFile('telegram.png');
 $telegram->sendContact([
     'chat_id' => getenv('CHAT_ID'),
     'phone_number' => '552199999999',
-    'first_name' => 'José das Couves'
+    'first_name' => 'José das  Couves'
 ]);
